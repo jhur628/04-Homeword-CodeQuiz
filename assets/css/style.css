@@ -1,0 +1,41 @@
+body {
+    background-color: gray;
+}
+
+.highScore {
+    font-size: 35px;
+    width: 250px;
+    height: 75px;
+    top: 10px;
+    left: 10px;
+}
+
+#timer {
+    font-size: 35px;
+    position:absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.quizContainer p {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+.startButton {
+    font-size: 25px;
+    width: 250px;
+    height: 75px;
+    margin-left: 300px;
+}
+
+#question {
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 25px;
+}
+
+#choices {
+    list-style: none;
+}
+
