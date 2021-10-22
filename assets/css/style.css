@@ -3,6 +3,8 @@ body {
 }
 
 .highScore {
+    padding: 10px;
+    background-color: rgba(85, 173, 85, 0.644);
     font-size: 35px;
     width: 250px;
     height: 75px;
@@ -18,6 +20,9 @@ body {
 }
 
 .intro {
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 100px;
     font-size: 20px;
 }
 
@@ -30,7 +35,8 @@ body {
     font-size: 25px;
     width: 250px;
     height: 75px;
-    margin-left: 500px;
+    margin-top: 100px;
+    margin-left: 50px;
 }
 
 #question {
@@ -43,6 +49,32 @@ body {
     list-style: none;
 }
 
+#correctContainer {
+    margin-top: 20px;
+}
+
 #winner {
     font-size: 30px;
+    margin-top: 20px;
+}
+
+#hiScoreInput {
+    font-size: 25px;
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+#hiScoreSubmit {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+#returnQuiz {
+    padding: 10px;
+    font-size: 25px;
+    width: 250px;
+    height: 75px;
+    margin-top: 100px;
+    margin-left: 50px;
+    background-color: green;
 }

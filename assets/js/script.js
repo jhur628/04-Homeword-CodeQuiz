@@ -6,6 +6,16 @@ var timerEl = document.querySelector("#timer")
 // variable for the winner div
 var winnerEl = document.querySelector("#winner")
 
+// variable for high score submit container
+var hiScoreEl = document.querySelector("#highSubmit");
+var scores = [];
+function init() {
+    if (JSON.parse(localStorage.getItem('scores')) !== null) {
+        scores = JSON.parse(localStorage.getItem("scores"));
+}
+    highScore()
+}
+
 // variable for questions
 var question1 = {
     question: "Javascript is a ________.",
@@ -36,8 +46,8 @@ var question4 = {
     answer1: "curly brackets", 
     answer2: "brackets", 
     answer3: "an ultimatum", 
-    answer4:"paranthesis",
-    // correct: "paranthesis"
+    answer4:"parenthesis",
+    // correct: "parenthesis"
 }
 var question5 = {
     question: "What is my favorite programming language?",
@@ -66,8 +76,7 @@ function time() {
     var countdown = setInterval(function() {
         // timer will show up
         // timer will countdown
-        // if timer === 0, timer will stop and run function to end quiz
-        // function to end quiz at 0 seconds
+        // if timer === 0, timer will stop and quiz will end
         timer--;
         timerEl.textContent = timer;
         if (timer <= 0) {
@@ -83,9 +92,14 @@ function time() {
             disItem5.children[0].remove();
             disItem6.children[0].remove();
             correctR.textContent = "";
+            // showing 0 as score, the score being the text from the timer element
             winnerEl.textContent = "You ran out of time! Your score is " + timerEl.textContent + "."
+        };
+        // if "CORRECT! Javascript is pretty great!" is displayed in the correct container
+        if (correctR.textContent === "CORRECT! Javascript is pretty great!") {
+            // stop the timer
+            clearInterval(countdown);
         }
-        
     }, 1000)
     
 }
@@ -478,11 +492,52 @@ function q5() {
         disItem6.children[0].remove();
 
         questionR.textContent = "";
-        clearInterval(countdown);
+
+        timerEl.remove();
         winner();
     })
 }
 
+// function when last question is answered
 function winner() {
-
+    // text saying the user finished is displayed along with user's score
+    winnerEl.textContent = "You did it! Your score is " + timerEl.textContent + ". Save your high score below, and try to beat your high score!"
+    // give user the ability to submit score
+    // make a high score text input box
+    var hiScoreInput = document.createElement("input");
+    hiScoreInput.type ="text"
+    hiScoreInput.id = "hiScoreInput"
+    hiScoreInput.placeholder = "Your Initials..."
+    hiScoreEl.appendChild(hiScoreInput)
+    // make a submit button for the high score
+    var hiScoreSubmit = document.createElement("button")
+    hiScoreSubmit.type = "submit"
+    hiScoreSubmit.value = "Submit"
+    hiScoreSubmit.textContent = "Submit"
+    hiScoreSubmit.id = "hiScoreSubmit"
+    hiScoreEl.appendChild(hiScoreSubmit)
+    // when submit is clicked,
+    hiScoreSubmit.addEventListener("click", function() {
+        // what is in hiScoreInput will be set in localStorage
+        var newSubmission = hiScoreInput.value + " " + timerEl.textContent;
+        scores.push(newSubmission)  
+        localStorage.setItem("scores", JSON.stringify(scores));
+    })
 }
+var scoresList = document.querySelector("#hiScoreList");
+
+function highScore() {
+    scoresList.innerHTML = "";
+
+    for (i = 0; i < scores.length; i++) {
+        var listItem = scores[i];
+        
+        var li = document.createElement("li");
+        li.textContent = listItem;
+        li.setAttribute("data-index", i);
+
+        scoresList.appendChild(li);
+    }
+}
+
+init();
