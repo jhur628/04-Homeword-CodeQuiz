@@ -1,3 +1,4 @@
+
 // variable for timer
 var timer = 60
 var timerEl = document.querySelector("#timer")
@@ -110,15 +111,58 @@ startButton.addEventListener("click", function() {
     choice4B.setAttribute("style", "font-size:30px;")
 
     // if user selects a wrong answer, 2 seconds are taken away
-    var wronganswer = ["#1button", "#2button", "#4button"]
-
-    document.wronganswer.addEventListener("click", function() {
+    choice1B.addEventListener("click", function() {
         timer -= 2;
+        timerEl.textContent = timer;
+        if (timer <= 0) {
+            clearInterval(countdown);
+            timerEl.textContent = "0"
+        };
+        // The user is made aware they chose the wrong answer in the correctContainer
+        correctR.textContent = "INCORRECT!";
+        correctR.setAttribute("style", "font-size:50px; color:red;");
     })
-    // if user selects the correct answer, function is run to take user to the next question
+
+    choice2B.addEventListener("click", function() {
+        timer -= 2;
+        timerEl.textContent = timer;
+        if (timer <= 0) {
+            clearInterval(countdown);
+            timerEl.textContent = "0"
+        }
+        correctR.textContent = "INCORRECT!"
+        correctR.setAttribute("style", "font-size:50px; color:red;")
+    })
+
+    choice4B.addEventListener("click", function() {
+        timer -= 2;
+        timerEl.textContent = timer;
+        if (timer <= 0) {
+            clearInterval(countdown);
+            timerEl.textContent = "0"
+        }
+        correctR.textContent = "INCORRECT!"
+        correctR.setAttribute("style", "font-size:50px; color:red;")
+    })
+
+    // if user selects the correct answer, function is invoked to take user to the next question
+    choice3B.addEventListener("click", function() {
+        correctR.textContent = "CORRECT! Javascript is a programming language!"
+        correctR.setAttribute("style", "font-size:50px; color:green;")
+        q2();
+        
+    })
+    
+    function q2() {
+    var disItem1 = document.querySelector("#1button")
+    var disItem1 = document.querySelector("#2button")
+    var disItem1 = document.querySelector("#3button")
+    var disItem1 = document.querySelector("#4button")
+
+    disItem1.remove();
+    disItem2.remove();
+    disItem3.remove();
+    disItem4.remove();
+}
 })
-    
-    
-    
-    
 
