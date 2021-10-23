@@ -98,7 +98,7 @@ function time() {
             disItem5.children[0].remove();
             disItem6.children[0].remove();
             correctR.textContent = "";
-            // showing 0 as score, the score being the text from the timer element
+            // button is made to reload application, so user can start at beginning
             var backQuizButton = document.createElement("button");
             backQuizButton.type = "button";
             backQuizButton.id = "backQuiz";
@@ -166,13 +166,14 @@ startButton.addEventListener("click", function() {
     answer4R.appendChild(choice4B)
     choice4B.setAttribute("style", "font-size:30px;")
 
-    // if user selects a wrong answer, 2 seconds are taken away
+    // if user selects a wrong answer, 5 seconds are taken away
     choice1B.addEventListener("click", function() {
         timer -= 5;
         timerEl.textContent = timer;
         // The user is made aware they chose the wrong answer in the correctContainer
         correctR.textContent = "INCORRECT!";
         correctR.setAttribute("style", "font-size:50px; color:red;");
+        // The user is taken to the next question
         var disItem3 = document.querySelector("#choice1")
         var disItem4 = document.querySelector("#choice2")
         var disItem5 = document.querySelector("#choice3")
@@ -282,13 +283,14 @@ function q2() {
     answer4R.appendChild(choice4B)
     choice4B.setAttribute("style", "font-size:30px;")
 
-    // if user selects a wrong answer, 2 seconds are taken away
+    // if user selects a wrong answer, 5 seconds are taken away
     choice1B.addEventListener("click", function() {
         timer -= 5;
         timerEl.textContent = timer;
         // The user is made aware they chose the wrong answer in the correctContainer
         correctR.textContent = "INCORRECT!";
         correctR.setAttribute("style", "font-size:50px; color:red;");
+        // The user is taken to the next question
         var disItem3 = document.querySelector("#choice1")
         var disItem4 = document.querySelector("#choice2")
         var disItem5 = document.querySelector("#choice3")
@@ -394,13 +396,14 @@ function q3() {
     answer4R.appendChild(choice4B)
     choice4B.setAttribute("style", "font-size:30px;")
 
-    // if user selects a wrong answer, 2 seconds are taken away
+    // if user selects a wrong answer, 5 seconds are taken away
     choice1B.addEventListener("click", function() {
         timer -= 5;
         timerEl.textContent = timer;
         // The user is made aware they chose the wrong answer in the correctContainer
         correctR.textContent = "INCORRECT!";
         correctR.setAttribute("style", "font-size:50px; color:red;");
+        // The user is taken to the next question
         var disItem3 = document.querySelector("#choice1")
         var disItem4 = document.querySelector("#choice2")
         var disItem5 = document.querySelector("#choice3")
@@ -506,13 +509,14 @@ function q4() {
     answer4R.appendChild(choice4B)
     choice4B.setAttribute("style", "font-size:30px;")
 
-    // if user selects a wrong answer, 2 seconds are taken away
+    // if user selects a wrong answer, 5 seconds are taken away
     choice1B.addEventListener("click", function() {
         timer -= 5;
         timerEl.textContent = timer;
         // The user is made aware they chose the wrong answer in the correctContainer
         correctR.textContent = "INCORRECT!";
         correctR.setAttribute("style", "font-size:50px; color:red;");
+        // The user is taken to the next question
         var disItem3 = document.querySelector("#choice1")
         var disItem4 = document.querySelector("#choice2")
         var disItem5 = document.querySelector("#choice3")
@@ -618,13 +622,14 @@ function q5() {
     answer4R.appendChild(choice4B)
     choice4B.setAttribute("style", "font-size:30px;")
 
-    // if user selects a wrong answer, 2 seconds are taken away
+    // if user selects a wrong answer, 5 seconds are taken away
     choice1B.addEventListener("click", function() {
         timer -= 5;
         timerEl.textContent = timer;
         // The user is made aware they chose the wrong answer in the correctContainer
         correctR.textContent = "INCORRECT!";
         correctR.setAttribute("style", "font-size:50px; color:red;");
+        // The user is taken to the high score submission page
         var disItem3 = document.querySelector("#choice1")
         var disItem4 = document.querySelector("#choice2")
         var disItem5 = document.querySelector("#choice3")
@@ -734,20 +739,21 @@ function winner() {
     })
 }
 
+// function that loads high scores and back to quiz button
 function highScoreWinner() {
     event.preventDefault();
     
     var disItemText = document.querySelector("#hiScoreInput");
     var disItemSubmit = document.querySelector("#hiScoreSubmit");
-    
+    // remove all elements, so only high score and button will be displayed
     disItemText.remove();
     disItemSubmit.remove();
     winnerEl.textContent = "";
     correctR.textContent = "";
     scoresList.innerHTML = "";
-
+    // add innerHTML for the title
     hiScoreTitleEl.innerHTML = "High Scores";
-
+    // append the scores/initials from local storage
     for (i = 0; i < scores.length; i++) {
         var listItem = scores[i];
         
@@ -756,7 +762,7 @@ function highScoreWinner() {
 
         scoresList.appendChild(li);
     }
-
+    // append button to reload page
     var backQuizButton = document.createElement("button");
     backQuizButton.type = "button";
     backQuizButton.id = "backQuiz";
@@ -778,9 +784,9 @@ hiScoreButton.addEventListener("click", function() {
     disItems2.remove();
     // high score button will disappear
     disItemHiButton.remove();
-
+    // add innerHTML for the title
     hiScoreTitleEl.innerHTML = "High Scores";
-
+    // append the scores/initials from local storage
     for (i = 0; i < scores.length; i++) {
         var listItem = scores[i];
         
@@ -789,7 +795,7 @@ hiScoreButton.addEventListener("click", function() {
 
         scoresList.appendChild(li);
     }
-
+    // append button to reload page
     var backQuizButton = document.createElement("button");
     backQuizButton.type = "button";
     backQuizButton.id = "backQuiz";
