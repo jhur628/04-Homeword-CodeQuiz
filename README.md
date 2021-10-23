@@ -42,7 +42,7 @@ I have a lot I want to say about this assignment, but I don't feel like writing 
 
 First, again, a lot of credit to my peers. We talked through a lot of problems together, and I feel they've helped me out a lot.
 
-Second, my code is messy. I am well aware of that. I'm working on it, but the good news is that the application is functional. When presented with my code, my peers were somewhat confused by the way I did things. I understand that the way I coded was not the most effecient way to code, but I just tried my best to follow my own pseudo code. I'm glad it worked out.
+Second, my code is messy. I am well aware of that. I'm working on it, but the good news is that the application is functional. When presented with my code, my peers were somewhat confused by the way I did things. I understand that the way I coded was not the most efficient way to code, but I just tried my best to follow my own pseudo code. I'm glad it worked out.
 
 Third, I had a good time with this assignment. It took me almost 30 hours, but those hours went by pretty quickly. It was challenging, but I learned so much about javascript. I also learned not to panic, and just work.
 
