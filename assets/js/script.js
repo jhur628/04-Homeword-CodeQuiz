@@ -1,4 +1,5 @@
 
+
 // variable for timer
 var timer = 60
 var timerEl = document.querySelector("#timer")
@@ -8,12 +9,17 @@ var winnerEl = document.querySelector("#winner")
 
 // variable for high score submit container
 var hiScoreEl = document.querySelector("#highSubmit");
+var scoresList = document.querySelector("#hiScoreList");
+var hiScoreListTitle = document.querySelector("#hiScoreTitle")
+var hiScoreButton = document.querySelector("#highScore")
+var hiScoreTitleEl = document.querySelector("#hiScoreTitle");
+var backToQuizEl = document.querySelector("#backToQuiz")
+
 var scores = [];
-function init() {
-    if (JSON.parse(localStorage.getItem('scores')) !== null) {
-        scores = JSON.parse(localStorage.getItem("scores"));
-}
-    highScore()
+
+// function to render scores on high score page from opening application
+if (JSON.parse(localStorage.getItem('scores')) !== null) {
+    scores = JSON.parse(localStorage.getItem("scores"));
 }
 
 // variable for questions
@@ -78,7 +84,7 @@ function time() {
         // timer will countdown
         // if timer === 0, timer will stop and quiz will end
         timer--;
-        timerEl.textContent = timer;
+        timerEl.textContent = timer;    
         if (timer <= 0) {
             clearInterval(countdown);
             timerEl.textContent = 0;
@@ -93,7 +99,15 @@ function time() {
             disItem6.children[0].remove();
             correctR.textContent = "";
             // showing 0 as score, the score being the text from the timer element
+            var backQuizButton = document.createElement("button");
+            backQuizButton.type = "button";
+            backQuizButton.id = "backQuiz";
+            backQuizButton.textContent = "Back to Quiz";
+            backToQuizEl.appendChild(backQuizButton)
             winnerEl.textContent = "You ran out of time! Your score is " + timerEl.textContent + "."
+            backQuizButton.addEventListener("click", function() {
+                location.reload();
+            })
         };
         // if "CORRECT! Javascript is pretty great!" is displayed in the correct container
         if (correctR.textContent === "CORRECT! Javascript is pretty great!") {
@@ -104,15 +118,20 @@ function time() {
     
 }
 
+
+
 // Function: if start button is pressed
 startButton.addEventListener("click", function() {
     // Create variables for elements that will be removed
     var disItems1 = document.querySelector("#intro");
     var disItems2 = document.querySelector("#startButton");
+    var disItemHiButton = document.querySelector("#highScore")
     // intro p will disappear
     disItems1.remove();
     // start button will disappear
     disItems2.remove();
+    // high score button will disappear
+    disItemHiButton.remove();
     // invoke time function
     time();
     
@@ -149,25 +168,61 @@ startButton.addEventListener("click", function() {
 
     // if user selects a wrong answer, 2 seconds are taken away
     choice1B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         // The user is made aware they chose the wrong answer in the correctContainer
         correctR.textContent = "INCORRECT!";
         correctR.setAttribute("style", "font-size:50px; color:red;");
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q2();
     })
 
     choice2B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         correctR.textContent = "INCORRECT!"
         correctR.setAttribute("style", "font-size:50px; color:red;")
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q2();
     })
 
     choice4B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         correctR.textContent = "INCORRECT!"
         correctR.setAttribute("style", "font-size:50px; color:red;")
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q2();
     })
 
     // if user selects the correct answer, remove question and choices
@@ -191,6 +246,8 @@ startButton.addEventListener("click", function() {
     
     
 })
+
+
 
 // function for another question
 function q2() {
@@ -227,25 +284,61 @@ function q2() {
 
     // if user selects a wrong answer, 2 seconds are taken away
     choice1B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         // The user is made aware they chose the wrong answer in the correctContainer
         correctR.textContent = "INCORRECT!";
         correctR.setAttribute("style", "font-size:50px; color:red;");
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q3();
     })
 
     choice2B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         correctR.textContent = "INCORRECT!"
         correctR.setAttribute("style", "font-size:50px; color:red;")
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q3();
     })
 
     choice4B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         correctR.textContent = "INCORRECT!"
         correctR.setAttribute("style", "font-size:50px; color:red;")
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q3();
     })
 
     // if user selects the correct answer, remove question and choices
@@ -303,25 +396,61 @@ function q3() {
 
     // if user selects a wrong answer, 2 seconds are taken away
     choice1B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         // The user is made aware they chose the wrong answer in the correctContainer
         correctR.textContent = "INCORRECT!";
         correctR.setAttribute("style", "font-size:50px; color:red;");
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q4();
     })
 
     choice2B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         correctR.textContent = "INCORRECT!"
         correctR.setAttribute("style", "font-size:50px; color:red;")
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q4();
     })
 
     choice3B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         correctR.textContent = "INCORRECT!"
         correctR.setAttribute("style", "font-size:50px; color:red;")
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q4();
     })
 
     // if user selects the correct answer, remove question and choices
@@ -379,25 +508,61 @@ function q4() {
 
     // if user selects a wrong answer, 2 seconds are taken away
     choice1B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         // The user is made aware they chose the wrong answer in the correctContainer
         correctR.textContent = "INCORRECT!";
         correctR.setAttribute("style", "font-size:50px; color:red;");
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q5();
     })
 
     choice2B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         correctR.textContent = "INCORRECT!"
         correctR.setAttribute("style", "font-size:50px; color:red;")
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q5();
     })
 
     choice3B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         correctR.textContent = "INCORRECT!"
         correctR.setAttribute("style", "font-size:50px; color:red;")
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+        q5();
     })
 
     // if user selects the correct answer, remove question and choices
@@ -455,25 +620,67 @@ function q5() {
 
     // if user selects a wrong answer, 2 seconds are taken away
     choice1B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         // The user is made aware they chose the wrong answer in the correctContainer
         correctR.textContent = "INCORRECT!";
         correctR.setAttribute("style", "font-size:50px; color:red;");
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+
+        timerEl.remove();
+        winner();
     })
 
     choice2B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         correctR.textContent = "INCORRECT!"
         correctR.setAttribute("style", "font-size:50px; color:red;")
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+
+        timerEl.remove();
+        winner();
     })
 
     choice4B.addEventListener("click", function() {
-        timer -= 2;
+        timer -= 5;
         timerEl.textContent = timer;
         correctR.textContent = "INCORRECT!"
         correctR.setAttribute("style", "font-size:50px; color:red;")
+        var disItem3 = document.querySelector("#choice1")
+        var disItem4 = document.querySelector("#choice2")
+        var disItem5 = document.querySelector("#choice3")
+        var disItem6 = document.querySelector("#choice4")
+
+        disItem3.children[0].remove();
+        disItem4.children[0].remove();
+        disItem5.children[0].remove();
+        disItem6.children[0].remove();
+
+        questionR.textContent = "";
+
+        timerEl.remove();
+        winner();
     })
 
     // if user selects the correct answer, remove question and choices
@@ -501,7 +708,7 @@ function q5() {
 // function when last question is answered
 function winner() {
     // text saying the user finished is displayed along with user's score
-    winnerEl.textContent = "You did it! Your score is " + timerEl.textContent + ". Save your high score below, and try to beat your high score!"
+    winnerEl.textContent = "You did it! Your score is " + timerEl.textContent + ". Save your high score below, and check out the high scores!"
     // give user the ability to submit score
     // make a high score text input box
     var hiScoreInput = document.createElement("input");
@@ -520,24 +727,76 @@ function winner() {
     hiScoreSubmit.addEventListener("click", function() {
         // what is in hiScoreInput will be set in localStorage
         var newSubmission = hiScoreInput.value + " " + timerEl.textContent;
+        console.log("test")
         scores.push(newSubmission)  
         localStorage.setItem("scores", JSON.stringify(scores));
+        highScoreWinner();
     })
 }
-var scoresList = document.querySelector("#hiScoreList");
 
-function highScore() {
+function highScoreWinner() {
+    event.preventDefault();
+    
+    var disItemText = document.querySelector("#hiScoreInput");
+    var disItemSubmit = document.querySelector("#hiScoreSubmit");
+    
+    disItemText.remove();
+    disItemSubmit.remove();
+    winnerEl.textContent = "";
+    correctR.textContent = "";
     scoresList.innerHTML = "";
+
+    hiScoreTitleEl.innerHTML = "High Scores";
 
     for (i = 0; i < scores.length; i++) {
         var listItem = scores[i];
         
         var li = document.createElement("li");
         li.textContent = listItem;
-        li.setAttribute("data-index", i);
 
         scoresList.appendChild(li);
     }
+
+    var backQuizButton = document.createElement("button");
+    backQuizButton.type = "button";
+    backQuizButton.id = "backQuiz";
+    backQuizButton.textContent = "Back to Quiz";
+    backToQuizEl.appendChild(backQuizButton)
+
+    backQuizButton.addEventListener("click", function() {
+        location.reload();
+    })
 }
 
-init();
+hiScoreButton.addEventListener("click", function() {
+    var disItems1 = document.querySelector("#intro");
+    var disItems2 = document.querySelector("#startButton");
+    var disItemHiButton = document.querySelector("#highScore")
+    // intro p will disappear
+    disItems1.remove();
+    // start button will disappear
+    disItems2.remove();
+    // high score button will disappear
+    disItemHiButton.remove();
+
+    hiScoreTitleEl.innerHTML = "High Scores";
+
+    for (i = 0; i < scores.length; i++) {
+        var listItem = scores[i];
+        
+        var li = document.createElement("li");
+        li.textContent = listItem;
+
+        scoresList.appendChild(li);
+    }
+
+    var backQuizButton = document.createElement("button");
+    backQuizButton.type = "button";
+    backQuizButton.id = "backQuiz";
+    backQuizButton.textContent = "Back to Quiz";
+    backToQuizEl.appendChild(backQuizButton)
+
+    backQuizButton.addEventListener("click", function() {
+        location.reload();
+    })
+})

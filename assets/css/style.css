@@ -4,7 +4,6 @@ body {
 
 .highScore {
     padding: 10px;
-    background-color: rgba(85, 173, 85, 0.644);
     font-size: 35px;
     width: 250px;
     height: 75px;
@@ -77,4 +76,21 @@ body {
     margin-top: 100px;
     margin-left: 50px;
     background-color: green;
+}
+
+#hiScoreTitle {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#hiScoreList {
+    list-style: none;
+    font-size: 20px;
+}
+
+#backQuiz {
+    font-size: 20px;
+    margin-left: 30px;
 }
